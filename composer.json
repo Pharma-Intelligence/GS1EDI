@@ -1,0 +1,20 @@
+{
+	"name" : "pharmaintelligence/gs1edi",
+	"description" : "GS1 EDI Toolkit",
+	"type" : "library",
+	"license" : "UNLICENSE",
+	"authors" : [{
+			"name" : "Robert van der Linde",
+			"email" : "r.vanderlinde@pharma-intelligence.nl"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"PharmaIntelligence\\GS1EDI\\" : "src/"
+		}
+	},
+	"require": {
+		"symfony/var-dumper": "^3.4",
+		"symfony/yaml": "^3.4"
+	}
+}

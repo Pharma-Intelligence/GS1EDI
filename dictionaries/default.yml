@@ -1,0 +1,59 @@
+mapping:
+    all:
+      1:
+        1: "segment_type"
+    UNB:
+      2:
+        1: "syntax_identifier"
+        2: "syntax_version"
+      3:
+        1: "sender_identification"
+        2: "identification__code"
+      4:
+        1: "receiver_identification"
+        2: "identification__code"
+      5:
+        1: "preparation_date"
+        2: "date_format"
+      6:
+        1: "control_reference"
+      7:
+        1: "reference_password"
+        2: "password_qualifier"
+      8:
+        1: "application_reference"
+      9:
+        1: "priority_code"
+      10:
+        1: "acknowledgement_request"
+      11:
+        1: "communications_agreement_identification"
+      12:
+        1: "test_indicator"
+    UNZ:
+      2:
+        1: "message_count"
+      3:
+        1: "control_reference"
+    UNH:
+      2:
+        1: "message_reference"
+      3:
+        1: "message_type"
+        2: "message_draft"
+        3: "message_version"
+        4: "message_organization"
+        5: "gs1_version_control_no"
+    DTM:
+      2:
+        1: "date_type"
+        2: "date_content"
+        3: "date_format"
+    UNT:
+      2:
+        1: "message_segment_count"
+      3: 
+        1: "message_reference_control"
+    UNS:
+      2:
+        1: "separator"
