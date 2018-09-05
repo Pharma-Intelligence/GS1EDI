@@ -7,12 +7,20 @@ class BGM extends Segment
     const TYPE_PRIORITY_ORDER   = 224;
     const TYPE_CROSSDOCK        = 237;
     
-    public $orderReference = null;
-    public $orderType = null;
+    const FUNCTION_CHANGED      = 4;
+    const FUNCTION_REPLACE      = 5;
+    const FUNCTION_ORIGINAL     = 9;
+    const FUNCTION_NOT_ACCEPTED = 27;
+    const FUNCTION_ACCEPTED     = 29;
+    
+    public $documentIdentification = null;
+    public $documentNameCode = null;
+    public $function = null;
     
     protected function map() {
-        $this->orderReference = $this->components['order_reference'];
-        $this->orderType = $this->components['order_type'];
+        $this->documentIdentification = $this->components['document_identification'];
+        $this->documentNameCode = $this->components['document_name_code'];
+        $this->function = $this->getComponent('message_function', self::FUNCTION_ORIGINAL);
     }
 }
 

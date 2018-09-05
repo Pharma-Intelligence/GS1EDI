@@ -15,7 +15,8 @@ class NAD extends Segment
     const TYPE_DELIVERY             = 'DP';
     
     protected function map() {
-        if($this->components['location_number_org'] === self::LOCATION_NUMBER_ORG_EAN && isset($this->components['location_number'])) {        
+        
+        if(isset($this->components['location_number']) && intval($this->components['location_number_org']) === self::LOCATION_NUMBER_ORG_EAN) {        
             $this->isGLN = true;
             $this->gln = $this->components['location_number'];
         }

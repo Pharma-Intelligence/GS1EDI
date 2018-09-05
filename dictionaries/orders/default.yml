@@ -18,11 +18,11 @@ mapping:
         1: "country"
     BGM:
       2:
-        1: "order_type"
+        1: "document_name_code"
       3: 
-        1: "order_reference"
+        1: "document_identification"
       4:
-        1: "original_indicator"
+        1: "message_function"
     ALI:
       4: 
         1: "code_scenario"

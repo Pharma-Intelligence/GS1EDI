@@ -16,9 +16,9 @@ class Segment
         
     }
     
-    public function getComponent($name) {
+    public function getComponent($name, $default = null) {
         if(!array_key_exists($name, $this->components))
-            return null;
+            return $default;
         return $this->components[$name];
     }
 }

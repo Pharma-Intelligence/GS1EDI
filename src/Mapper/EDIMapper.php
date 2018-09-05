@@ -3,6 +3,8 @@ namespace PharmaIntelligence\GS1EDI\Mapper;
 
 use Symfony\Component\Yaml\Yaml;
 use PharmaIntelligence\GS1EDI\Segment\Segment;
+use PharmaIntelligence\GS1EDI\Segment\SegmentGroup;
+use PharmaIntelligence\GS1EDI\Message;
 
 class EDIMapper
 {
@@ -30,7 +32,9 @@ class EDIMapper
             }
         }
         foreach($maps as $map) {
-            $map = Yaml::parseFile($map);
+            
+            // Parsefile only works after v3.0
+            $map = Yaml::parse($map);
             
             $this->map = array_merge_recursive($this->map, $map['mapping']);
             if(array_key_exists('structure', $map)) {
@@ -71,15 +75,18 @@ class EDIMapper
     
     protected function structure(array $mappedTree) {
         $structure = $this->buildStructureGroup($this->position, $this->structure, $mappedTree);
+        
+        return new Message($structure);
         return $structure;
     }
     
-    protected function buildStructureGroup($position, $structureDefinition, $mappedTree) {
+    protected function buildStructureGroup($position, $structureDefinition, $mappedTree, $depth = 0) {
+        
         $structure = [];
         while($this->position < count($mappedTree)) {
             $segment = $mappedTree[$this->position];
             $segmentType = $segment['type'];
-            if(!in_array($segmentType, array_keys($structureDefinition))) {
+            if(!in_array($segmentType, array_keys($structureDefinition)) && $depth > 0) {
                 return $structure;
             }
             isset($structureDefinition[$segmentType]['seen'])?$structureDefinition[$segmentType]['seen']++:$structureDefinition[$segmentType]['seen'] = 1;
@@ -88,7 +95,8 @@ class EDIMapper
             }
             
             if(isset($structureDefinition[$segmentType]['isGroup'])) {
-                $structure[$structureDefinition[$segmentType]['groupName']][] = $this->buildStructureGroup($this->position, $structureDefinition[$segmentType]['children'], $mappedTree);
+                $group = $this->buildStructureGroup($this->position, $structureDefinition[$segmentType]['children'], $mappedTree, $depth+1);
+                $structure[] = new SegmentGroup($group, $structureDefinition[$segmentType]['groupName']);
                 continue;
             }
             if(class_exists(sprintf('PharmaIntelligence\GS1EDI\Segment\%s', $segmentType)))
