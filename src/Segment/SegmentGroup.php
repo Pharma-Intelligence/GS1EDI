@@ -1,7 +1,7 @@
 <?php
 namespace PharmaIntelligence\GS1EDI\Segment;
 
-class SegmentGroup
+class SegmentGroup implements \Countable
 {
     
     protected $segments = [];
@@ -22,7 +22,7 @@ class SegmentGroup
         $this->map();
     }
     
-    public function __count() {
+    public function count() {
         $count = 0;
         foreach($this->segments as $segment) {
             if($segment instanceof SegmentGroup) {

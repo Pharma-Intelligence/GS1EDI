@@ -5,6 +5,7 @@ class BGM extends Segment
 {
     const TYPE_ORDER            = 220;
     const TYPE_PRIORITY_ORDER   = 224;
+    const TYPE_ORDER_RESPONSE   = 231;
     const TYPE_CROSSDOCK        = 237;
     
     const FUNCTION_CHANGED      = 4;
