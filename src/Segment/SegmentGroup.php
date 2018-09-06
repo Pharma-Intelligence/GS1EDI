@@ -1,7 +1,7 @@
 <?php
 namespace PharmaIntelligence\GS1EDI\Segment;
 
-class SegmentGroup implements \Countable
+class SegmentGroup implements \Countable, \Iterator
 {
     
     protected $segments = [];
@@ -34,5 +34,24 @@ class SegmentGroup implements \Countable
         return $count;
     }
     
+    public function rewind() {
+        return reset($this->segments);
+    }
+    
+    public function current() {
+        return current($this->segments);
+    }
+    
+    public function key() {
+        return key($this->segments);
+    }
+    
+    public function next() {
+        return next($this->segments);
+    }
+    
+    public function valid() {
+        return key($this->myArray) !== null;
+    }
 }
 
