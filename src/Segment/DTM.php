@@ -13,6 +13,7 @@ class DTM extends Segment
     const TYPE_REQUESTED_DELIVERY_DATE  = 2;
     const TYPE_EARLIEST_DELIVERY_DATE   = 64;
     const TYPE_LATEST_DELIVERY_DATE     = 63;
+    const TYPE_PLANNED_DELIVERY_DATE    = 76;
     
     public $dateType = null;
     public $date = null;

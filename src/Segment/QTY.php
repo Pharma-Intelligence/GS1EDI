@@ -6,7 +6,7 @@ class QTY extends Segment
     const TYPE_DISCRETE     = 1;
     const TYPE_ORDERED      = 21;
     
-    const MEASURE_PACKAGE   = 'PKG'; // Custom code. Not a UN/GS1 Standard
+    const MEASURE_PACKAGE   = 'PCE';
     const MEASURE_KILOGRAM  = 'KGM';
     const MEASURE_POUND     = 'PND';
     

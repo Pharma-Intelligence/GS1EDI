@@ -57,3 +57,8 @@ mapping:
     UNS:
       2:
         1: "separator"
+    RFF:
+      2:
+        1: "reference_type"
+        2: "reference"
+        3: "sub_reference"
