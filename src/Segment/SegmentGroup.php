@@ -51,7 +51,7 @@ class SegmentGroup implements \Countable, \Iterator
     }
     
     public function valid() {
-        return key($this->myArray) !== null;
+        return key($this->segments) !== null;
     }
 }
 
