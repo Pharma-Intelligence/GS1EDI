@@ -19,7 +19,7 @@ class DTM extends Segment
     public $date = null;
     
     protected function map() {
-        $this->dateType = $this->components['date_type'];
+        $this->dateType = intval($this->components['date_type']);
         switch($this->components['date_format']) {
             case self::INDICATOR_DATE_US:
                 $this->date = \DateTime::createFromFormat(self::FORMAT_DATE_US, $this->components['date_content']);

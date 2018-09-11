@@ -23,5 +23,9 @@ class BGM extends Segment
         $this->documentNameCode = $this->components['document_name_code'];
         $this->function = $this->getComponent('message_function', self::FUNCTION_ORIGINAL);
     }
+    
+    public function getOrderNumber() {
+        return $this->getComponent('document_identification', null);
+    }
 }
 
