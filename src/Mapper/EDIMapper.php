@@ -33,8 +33,7 @@ class EDIMapper
         }
         foreach($maps as $map) {
             
-            // Parsefile only works after v3.0
-            $map = Yaml::parse($map);
+            $map = Yaml::parse(file_get_contents($map));
             
             $this->map = array_merge_recursive($this->map, $map['mapping']);
             if(array_key_exists('structure', $map)) {
