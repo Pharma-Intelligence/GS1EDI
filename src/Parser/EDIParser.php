@@ -2,6 +2,7 @@
 namespace PharmaIntelligence\GS1EDI\Parser;
 
 use PharmaIntelligence\GS1EDI\Mapper\EDIMapper;
+use PharmaIntelligence\GS1EDI\Message;
 
 class EDIParser
 {
@@ -28,7 +29,11 @@ class EDIParser
     ];
     
     protected $characterArray = [];
-    
+
+    /**
+     * @param $ediString
+     * @return Message[]
+     */
     public function load($ediString) {
         $ediString = trim($ediString);
         if(substr($ediString, 0, 3) == self::CONTROL_SEGMENT) {

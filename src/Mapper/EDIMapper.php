@@ -24,11 +24,15 @@ class EDIMapper
         $versionSub = $messageTypeData[3];
         $maps = [];
         foreach($this->locations as $location) {
-            if(file_exists($location.'default.yml'))
-                $maps[] = $location.'default.yml';
+            if(file_exists($location.'default.yml')) {
+                $maps[] = $location . 'default.yml';
+            }
             if(is_dir($location.strtolower($type))) {
-                if(file_exists($location.strtolower($type).'/default.yml'))
-                    $maps[] = $location.strtolower($type).'/default.yml';
+                if(file_exists($location.strtolower($type).'/'.$version.$versionSub.'.yml')) {
+                    $maps[] = $location . strtolower($type) . '/'.$version.$versionSub.'.yml';
+                } elseif(file_exists($location.strtolower($type).'/default.yml')) {
+                    $maps[] = $location . strtolower($type) . '/default.yml';
+                }
             }
         }
         foreach($maps as $map) {
