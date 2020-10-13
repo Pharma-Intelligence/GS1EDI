@@ -24,6 +24,9 @@ class DTM extends Segment
             case self::INDICATOR_DATE_US:
                 $this->date = \DateTime::createFromFormat(self::FORMAT_DATE_US, $this->components['date_content']);
                 break;
+            case self::INDICATOR_DATETIME_US:
+                $this->date = \DateTime::createFromFormat(self::FORMAT_DATETIME_US, $this->components['date_content']);
+                break;
         }        
     }
 }

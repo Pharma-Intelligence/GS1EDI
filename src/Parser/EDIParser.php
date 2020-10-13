@@ -30,6 +30,18 @@ class EDIParser
     
     protected $characterArray = [];
 
+
+    /**
+     * @param $file
+     * @return Message[]
+     */
+    public function loadFromFile($file) {
+        if(!file_exists($file)) {
+            return [];
+        }
+        return $this->load(file_get_contents($file));
+    }
+
     /**
      * @param $ediString
      * @return Message[]
