@@ -16,8 +16,10 @@ class PIA extends Segment
     public $gtin    = null;
     public $supplierArticleNumber = null;
     public $identifcationType = null;
+    public $identificationOrg = null;
     
     protected function map() {
+
         if($this->components['identification_org'] == self::TYPE_HIBC) {        
             $this->hibc = $this->components['identification'];
         }
@@ -30,6 +32,8 @@ class PIA extends Segment
         if($this->components['identification_org'] == self::TYPE_GTIN) {
             $this->gtin = $this->components['identification'];
         }
+
+        $this->identificationOrg = $this->components['identification_org'];
         $this->identifcationType = $this->components['identification_type'];
     }
 }
